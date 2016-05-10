@@ -22,6 +22,17 @@ SRCS_PATH = srcs/
 
 SRCS_NAME = main.c \
 			parse_arguments.c \
+			resolve_host.c \
+			server_connect.c \
+			run.c \
+			get_next_command.c \
+			command_get.c \
+			run_command.c \
+			command_cd.c \
+			command_ls.c \
+			command_put.c \
+			command_pwd.c \
+			command_quit.c \
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 

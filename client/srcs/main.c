@@ -10,4 +10,7 @@ int		main(int ac, char **av)
 		exit(EXIT_FAILURE);
 	}
 	parse_arguments(&env, av);
+	resolve_host(&env);
+	server_connect(&env);
+	run(&env);
 }

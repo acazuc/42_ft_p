@@ -27,5 +27,11 @@ void	command_get(t_env *env, char **splitted);
 void	command_put(t_env *env, char **splitted);
 void	command_pwd(t_env *env, char **splitted);
 void	command_quit(t_env *env, char **splitted);
+long	read_long(t_env *env);
+char	*read_str(t_env *env);
+void	*read_mem(t_env *env, long length);
+void	write_long(t_env *env, long val);
+void	write_str(t_env *env, char *str);
+void	write_mem(t_env *env, void *data, size_t len);
 
 #endif

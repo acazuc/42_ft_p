@@ -21,6 +21,17 @@ INCLUDES_PATH = includes/
 SRCS_PATH = srcs/
 
 SRCS_NAME = main.c \
+			build_host.c \
+			parse_parameters.c \
+			run.c \
+			run_client.c \
+			reads.c \
+			writes.c \
+			command_cd.c \
+			command_get.c \
+			command_ls.c \
+			command_put.c \
+			command_pwd.c \
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 

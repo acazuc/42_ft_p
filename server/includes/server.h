@@ -6,7 +6,9 @@
 # include <sys/socket.h>
 # include <limits.h>
 # include <netdb.h>
+# include <errno.h>
 # include <dirent.h>
+# include <fcntl.h>
 
 typedef struct		s_env
 {
@@ -17,7 +19,7 @@ typedef struct		s_env
 
 typedef struct s_client
 {
-	char *path;
+	char *origin_path;
 	int sock_fd;
 }	t_client;
 

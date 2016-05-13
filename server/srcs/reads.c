@@ -4,7 +4,7 @@ long	read_long(t_client *client)
 {
 	long	val;
 
-	if (read(client->sock_fd, &val, sizeof(val)) == -1)
+	if (read(client->sock_fd, &val, sizeof(val)) <= 0)
 	{
 		ft_putendl_fd("client: can't read from socket", 2);
 		exit(EXIT_FAILURE);
@@ -41,7 +41,7 @@ void	*read_mem(t_client *client, long len)
 		ft_putendl_fd("client: can't malloc from read_mem", 2);
 		exit(EXIT_FAILURE);
 	}
-	if (read(client->sock_fd, mem, len) == -1)
+	if (read(client->sock_fd, mem, len) <= 0)
 	{
 		ft_putendl_fd("client: can't read from socket", 2);
 		exit(EXIT_FAILURE);

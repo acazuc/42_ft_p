@@ -6,6 +6,7 @@
 # include <sys/socket.h>
 # include <limits.h>
 # include <netdb.h>
+# include <fcntl.h>
 
 typedef struct		s_env
 {

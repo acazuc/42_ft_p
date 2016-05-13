@@ -5,7 +5,7 @@ void command_ls(t_client *client)
 	DIR *dir;
 	struct dirent *dirent;
 
-	if (!(dir = opendir(client->path)))
+	if (!(dir = opendir(".")))
 	{
 		write_long(client, -1);
 		return;
@@ -15,5 +15,6 @@ void command_ls(t_client *client)
 	{
 		write_str(client, dirent->d_name);
 	}
+	closedir(dir);
 	write_str(client, "");
 }

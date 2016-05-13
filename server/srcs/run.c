@@ -25,6 +25,7 @@ void run(t_env *env)
 			ft_putendl_fd("server: can't fork", 2);
 			exit(EXIT_FAILURE);
 		}
+		close(fd);
 		(void)env;
 	}
 }

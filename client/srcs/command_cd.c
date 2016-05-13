@@ -22,6 +22,16 @@ void	command_cd(t_env *env, char **splitted)
 		ft_putendl("ERROR: you don't have the permissions");
 		return ;
 	}
+	else if (result == -3)
+	{
+		ft_putendl("ERROR: unknown error");
+		return ;
+	}
+	else if (result == -4)
+	{
+		ft_putendl("ERROR: not a directory");
+		return ;
+	}
 	else if (result == 0)
 	{
 		ft_putendl("SUCCESS");

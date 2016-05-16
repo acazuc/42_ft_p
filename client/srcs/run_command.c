@@ -18,10 +18,7 @@ void		run_command(t_env *env, char *command)
 	char **splitted;
 
 	if (!(splitted = ft_strsplit(command, ' ')))
-	{
-		ft_putendl_fd("client: can't split command", 2);
-		exit(EXIT_FAILURE);
-	}
+		ft_exit("client: can't split command", EXIT_FAILURE);
 	if (splitted[0])
 	{
 		if (!ft_strcmp(splitted[0], "ls"))

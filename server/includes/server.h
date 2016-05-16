@@ -4,6 +4,7 @@
 # include "../../libft/includes/libft.h"
 # include <netinet/in.h>
 # include <sys/socket.h>
+# include <sys/stat.h>
 # include <limits.h>
 # include <netdb.h>
 # include <errno.h>

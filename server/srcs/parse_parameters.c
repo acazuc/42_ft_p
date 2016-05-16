@@ -18,9 +18,6 @@ static int	valid_port(char *port)
 void parse_parameters(t_env *env, char **av)
 {
 	if (!valid_port(av[1]))
-	{
-		ft_putendl_fd("server: invalid port", 2);
-		exit(EXIT_FAILURE);
-	}
+		ft_exit("server: invalid port", EXIT_FAILURE);
 	env->port = ft_atoi(av[1]);
 }

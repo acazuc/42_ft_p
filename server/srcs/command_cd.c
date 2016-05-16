@@ -8,16 +8,10 @@ void command_cd(t_client *client)
 
 	gpath = read_str(client);
 	if (!(current = malloc(PATH_MAX + 1)))
-	{
-		ft_putendl_fd("server: can't malloc", 2);
-		exit(EXIT_FAILURE);
-	}
+		ft_exit("server: can't malloc", EXIT_FAILURE);
 	ft_bzero(current, PATH_MAX + 1);
 	if (!getcwd(current, PATH_MAX))
-	{
-		ft_putendl_fd("server: can't malloc", 2);
-		exit(EXIT_FAILURE);
-	}
+		ft_putendl_fd("server: can't getcwd", EXIT_FAILURE);
 	if (chdir(gpath) == -1)
 	{
 		if (errno == EACCES)
@@ -33,16 +27,10 @@ void command_cd(t_client *client)
 		return;
 	}
 	if (!(new = malloc(PATH_MAX + 1)))
-	{
-		ft_putendl_fd("server: can't malloc", 2);
-		exit(EXIT_FAILURE);
-	}
+		ft_putendl_fd("server: can't malloc", EXIT_FAILURE);
 	ft_bzero(new, PATH_MAX + 1);
 	if (!getcwd(new, PATH_MAX))
-	{
-		ft_putendl_fd("server: can't malloc", 2);
-		exit(EXIT_FAILURE);
-	}
+		ft_putendl_fd("server: can't getcwd", EXIT_FAILURE);
 	if (ft_strstr(new, client->origin_path) != new)
 	{
 		free(gpath);

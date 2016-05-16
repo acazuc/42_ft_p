@@ -6,10 +6,7 @@ static void put_file(t_env *env, int fd)
 	char *buff;
 
 	if (!(buff = malloc(sizeof(*buff) * 500)))
-	{
-		ft_putendl_fd("client: can't malloc", 2);
-		exit(EXIT_FAILURE);
-	}
+		ft_exit("client: can't malloc", EXIT_FAILURE);
 	while ((readed = read(fd, buff, 500)) > 0)
 	{
 		write_long(env, readed);

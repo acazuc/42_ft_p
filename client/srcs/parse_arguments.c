@@ -19,9 +19,6 @@ void	parse_arguments(t_env *env, char **av)
 {
 	env->host = av[1];
 	if (!valid_port(av[2]))
-	{
-		ft_putendl_fd("client: invalid port number", 2);
-		exit(EXIT_FAILURE);
-	}
+		ft_exit("client: invalid port number", EXIT_FAILURE);
 	env->port = (unsigned short)ft_atoi(av[2]);
 }

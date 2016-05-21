@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   run_command.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/05/21 15:45:44 by acazuc            #+#    #+#             */
+/*   Updated: 2016/05/21 15:48:45 by acazuc           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "client.h"
 
-static void splitted_free(char **splitted)
+static void	splitted_free(char **splitted)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	while (splitted[i])
@@ -15,7 +27,7 @@ static void splitted_free(char **splitted)
 
 void		run_command(t_env *env, char *command)
 {
-	char **splitted;
+	char	**splitted;
 
 	if (!(splitted = ft_strsplit(command, ' ')))
 		ft_exit("client: can't split command", EXIT_FAILURE);

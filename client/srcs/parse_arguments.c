@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_arguments.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/05/21 15:45:32 by acazuc            #+#    #+#             */
+/*   Updated: 2016/05/21 15:48:12 by acazuc           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "client.h"
 
 static int	valid_port(char *port)
@@ -15,7 +27,7 @@ static int	valid_port(char *port)
 	return (1);
 }
 
-void	parse_arguments(t_env *env, char **av)
+void		parse_arguments(t_env *env, char **av)
 {
 	env->host = av[1];
 	if (!valid_port(av[2]))

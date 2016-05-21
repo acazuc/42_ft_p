@@ -1,14 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   command_ls.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/05/21 15:54:18 by acazuc            #+#    #+#             */
+/*   Updated: 2016/05/21 15:55:35 by acazuc           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "server.h"
 
-void command_ls(t_client *client)
+void	command_ls(t_client *client)
 {
-	DIR *dir;
-	struct dirent *dirent;
+	DIR				*dir;
+	struct dirent	*dirent;
 
 	if (!(dir = opendir(".")))
 	{
 		write_long(client, -1);
-		return;
+		return ;
 	}
 	write_long(client, 0);
 	while ((dirent = readdir(dir)))

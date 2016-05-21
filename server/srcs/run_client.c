@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   run_client.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/05/21 15:54:37 by acazuc            #+#    #+#             */
+/*   Updated: 2016/05/21 16:02:31 by acazuc           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "server.h"
 
-static void set_current_path(t_client *client)
+static void		set_current_path(t_client *client)
 {
 	if (!(client->origin_path = malloc(PATH_MAX + 1)))
 		ft_exit("server: can't malloc", EXIT_FAILURE);
@@ -8,10 +20,10 @@ static void set_current_path(t_client *client)
 		ft_exit("server: can't malloc", EXIT_FAILURE);
 }
 
-void run_client(t_env *env, int fd)
+void			run_client(int fd)
 {
-	t_client client;
-	long packet_id;
+	t_client	client;
+	long		packet_id;
 
 	ft_putendl_fd("server: new client connected", 2);
 	client.sock_fd = fd;
@@ -35,5 +47,4 @@ void run_client(t_env *env, int fd)
 		else
 			ft_exit("unknown packet", EXIT_FAILURE);
 	}
-	(void)env;
 }

@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   command_pwd.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/05/21 15:54:22 by acazuc            #+#    #+#             */
+/*   Updated: 2016/05/21 15:55:47 by acazuc           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "server.h"
 
-void command_pwd(t_client *client)
+void	command_pwd(t_client *client)
 {
-	char *current;
+	char	*current;
 
 	if (!(current = malloc(PATH_MAX + 1)))
 		ft_exit("server: can't malloc", EXIT_FAILURE);

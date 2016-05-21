@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   command_put.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/05/21 15:54:19 by acazuc            #+#    #+#             */
+/*   Updated: 2016/05/21 15:55:18 by acazuc           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "server.h"
 
-static char *get_file_name(char *file)
+static char	*get_file_name(char *file)
 {
-	char *tmp;
+	char	*tmp;
 
 	tmp = ft_strrchr(file, '/');
 	if (!tmp)
@@ -12,10 +24,10 @@ static char *get_file_name(char *file)
 	return (tmp);
 }
 
-static void read_file(t_client *client, int fd)
+static void	read_file(t_client *client, int fd)
 {
-	long tmp;
-	char *data;
+	long	tmp;
+	char	*data;
 
 	while ((tmp = read_long(client)) >= 0)
 	{
@@ -24,10 +36,10 @@ static void read_file(t_client *client, int fd)
 	}
 }
 
-void command_put(t_client *client)
+void		command_put(t_client *client)
 {
-	char *file;
-	int fd;
+	char	*file;
+	int		fd;
 
 	file = read_str(client);
 	file = get_file_name(file);
@@ -40,7 +52,7 @@ void command_put(t_client *client)
 		else
 			write_long(client, -2);
 		free(file);
-		return;
+		return ;
 	}
 	free(file);
 	write_long(client, 1);

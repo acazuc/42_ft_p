@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   command_put.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/05/21 15:45:16 by acazuc            #+#    #+#             */
+/*   Updated: 2016/05/21 15:52:10 by acazuc           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "client.h"
 
-static void put_file(t_env *env, int fd)
+static void	put_file(t_env *env, int fd)
 {
-	ssize_t readed;
-	char *buff;
+	ssize_t	readed;
+	char	*buff;
 
 	if (!(buff = malloc(sizeof(*buff) * 500)))
 		ft_exit("client: can't malloc", EXIT_FAILURE);
@@ -18,20 +30,20 @@ static void put_file(t_env *env, int fd)
 	free(buff);
 }
 
-void	command_put(t_env *env, char **splitted)
+void		command_put(t_env *env, char **splitted)
 {
-	int result;
-	int fd;
+	int		result;
+	int		fd;
 
 	if (!splitted[1])
 	{
 		ft_putendl("ERROR: you must specify a file name");
-		return;
+		return ;
 	}
 	if ((fd = open(splitted[1], O_RDONLY)) == -1)
 	{
 		ft_putendl("ERROR: can't open file");
-		return;
+		return ;
 	}
 	write_long(env, 5);
 	write_str(env, splitted[1]);

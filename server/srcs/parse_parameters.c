@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_parameters.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/05/21 15:54:28 by acazuc            #+#    #+#             */
+/*   Updated: 2016/05/21 15:56:27 by acazuc           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "server.h"
 
 static int	valid_port(char *port)
@@ -15,7 +27,7 @@ static int	valid_port(char *port)
 	return (1);
 }
 
-void parse_parameters(t_env *env, char **av)
+void		parse_parameters(t_env *env, char **av)
 {
 	if (!valid_port(av[1]))
 		ft_exit("server: invalid port", EXIT_FAILURE);

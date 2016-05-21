@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   command_get.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/05/21 15:54:12 by acazuc            #+#    #+#             */
+/*   Updated: 2016/05/21 16:04:27 by acazuc           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "server.h"
 
-static void put_file(t_client *client, int fd)
+static void		put_file(t_client *client, int fd)
 {
-	ssize_t readed;
-	char *buff;
+	ssize_t	readed;
+	char	*buff;
 
 	if (!(buff = malloc(sizeof(*buff) * 500)))
 		ft_exit("client: can't malloc", EXIT_FAILURE);
@@ -19,26 +31,26 @@ static void put_file(t_client *client, int fd)
 	free(buff);
 }
 
-static void get_file_name_path(char *path_name, char **path, char **file)
+static void		get_file_name_path(char *path_name, char **path, char **file)
 {
-	char *last_slash;
+	char	*last_slash;
 
 	last_slash = ft_strrchr(path_name, '/');
 	if (!last_slash)
 	{
 		*path = ".";
 		*file = path_name;
-		return;
+		return ;
 	}
 	*last_slash = '\0';
-	*path = path_name;
+	*path = pah_name;
 	*file = last_slash + 1;
 }
 
-static int move_to(t_client *client, char *gpath)
+static int		move_to(t_client *client, char *gpath)
 {
-	char *current;
-	char *new;
+	char	*current;
+	char	*new;
 
 	if (!(current = malloc(PATH_MAX + 1)))
 		ft_exit("server: can't malloc", EXIT_FAILURE);
@@ -59,16 +71,15 @@ static int move_to(t_client *client, char *gpath)
 	{
 		free(new);
 		free(current);
-		int lol = chdir(current);
-		lol = 0;
-		return (lol);
+		chdir(current);
+		return (0);
 	}
 	return (1);
 }
 
-static int get_mode(int fd, int *mode)
+static int		get_mode(int fd, int *mode)
 {
-	struct stat stats;
+	struct stat	stats;
 
 	if (fstat(fd, &stats) == -1)
 		return (0);
@@ -76,13 +87,13 @@ static int get_mode(int fd, int *mode)
 	return (1);
 }
 
-void command_get(t_client *client)
+void			command_get(t_client *client)
 {
-	char *path;
-	char *file;
-	char *tmp;
-	int mode;
-	int fd;
+	char	*path;
+	char	*file;
+	char	*tmp;
+	int		mode;
+	int		fd;
 
 	get_file_name_path((tmp = read_str(client)), &path, &file);
 	if (!move_to(client, path))

@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:54:09 by acazuc            #+#    #+#             */
-/*   Updated: 2016/05/21 16:01:07 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/05/21 16:07:32 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ static void		error_2(t_client *client, char *gpath, char *new, char *current)
 {
 	free(gpath);
 	free(new);
-	free(current);
 	chdir(current);
+	free(current);
 	write_long(client, -2);
 }
 

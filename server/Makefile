@@ -6,7 +6,7 @@
 #    By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/25 06:50:12 by acazuc            #+#    #+#              #
-#    Updated: 2016/04/02 15:58:03 by acazuc           ###   ########.fr        #
+#    Updated: 2016/05/21 16:13:20 by acazuc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCS_NAME = main.c \
 			writes.c \
 			command_cd.c \
 			command_get.c \
+			command_get2.c \
 			command_ls.c \
 			command_put.c \
 			command_pwd.c \

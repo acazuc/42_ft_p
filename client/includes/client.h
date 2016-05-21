@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:46:02 by acazuc            #+#    #+#             */
-/*   Updated: 2016/05/21 15:46:56 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/05/21 16:21:43 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../../libft/includes/libft.h"
 # include <netinet/in.h>
 # include <sys/socket.h>
+# include <sys/stat.h>
 # include <limits.h>
 # include <netdb.h>
 # include <fcntl.h>

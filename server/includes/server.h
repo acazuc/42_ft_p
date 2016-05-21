@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:52:25 by acazuc            #+#    #+#             */
-/*   Updated: 2016/05/21 16:02:38 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/05/21 16:27:45 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,13 @@ void					command_pwd(t_client *client);
 void					command_put(t_client *client);
 void					command_ls(t_client *client);
 void					command_get(t_client *client);
+void					command_get_2_error(char *new, char *current);
+void					command_get_2_error2(t_client *client, char *tmp);
+void					command_get_2_end(t_client *client, int mode, int fd
+		, char *tmp);
+void					command_get_2_error3(t_client *client, int fd
+		, char *tmp);
+void					command_get_put_file(t_client *client, int fd);
 void					command_cd(t_client *client);
 
 #endif

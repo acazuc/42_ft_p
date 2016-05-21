@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:54:19 by acazuc            #+#    #+#             */
-/*   Updated: 2016/05/21 15:55:18 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/05/21 16:16:49 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,14 @@ void		command_put(t_client *client)
 {
 	char	*file;
 	int		fd;
+	int		mode;
 
 	file = read_str(client);
 	file = get_file_name(file);
 	if (!(file = ft_strjoin_free2("./", file)))
 		ft_exit("server: can't join file name", EXIT_FAILURE);
-	if ((fd = open(file, O_WRONLY | O_CREAT | O_TRUNC, 0644)) == -1)
+	mode = read_long(client);
+	if ((fd = open(file, O_WRONLY | O_CREAT | O_TRUNC, mode)) == -1)
 	{
 		if (errno == EACCES)
 			write_long(client, -1);

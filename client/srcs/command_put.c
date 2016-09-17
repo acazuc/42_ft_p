@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:45:16 by acazuc            #+#    #+#             */
-/*   Updated: 2016/05/21 16:22:38 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/09/17 13:07:22 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ static int	get_mode(int fd, int *mode)
 
 static void	put_error(int error)
 {
-	if (result == -1)
+	if (error == -1)
 		ft_putendl("ERROR: you don't have permissions");
-	else if (result == -2)
+	else if (error == -2)
 		ft_putendl("ERROR: can't create file");
 	else
 		ft_putendl("ERROR: unknown error");

@@ -6,7 +6,7 @@
 #    By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/25 06:50:12 by acazuc            #+#    #+#              #
-#    Updated: 2016/05/21 16:13:20 by acazuc           ###   ########.fr        #
+#    Updated: 2016/09/27 11:36:01 by acazuc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror -Ofast
 
-INCLUDES_PATH = includes/
+INCLUDES_PATH = include/
 
-SRCS_PATH = srcs/
+SRCS_PATH = src/
 
 SRCS_NAME = main.c \
 			build_host.c \
@@ -36,7 +36,7 @@ SRCS_NAME = main.c \
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 
-OBJS_PATH = objs/
+OBJS_PATH = obj/
 
 OBJS_NAME = $(SRCS_NAME:.c=.o)
 

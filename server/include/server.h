@@ -6,14 +6,14 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:52:25 by acazuc            #+#    #+#             */
-/*   Updated: 2016/05/21 16:27:45 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/09/27 11:37:24 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SERVER_H
 # define SERVER_H
 
-# include "../../libft/includes/libft.h"
+# include "../../libft/include/libft.h"
 # include <netinet/in.h>
 # include <sys/socket.h>
 # include <sys/stat.h>

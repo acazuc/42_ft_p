@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 16:11:09 by acazuc            #+#    #+#             */
-/*   Updated: 2016/05/21 16:27:21 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/09/30 23:12:43 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void	command_get_2_error(char *new, char *current)
 {
 	free(new);
-	chdir(current);
+	if (chdir(current) == -1)
+		ft_exit("server: can't chdir back", EXIT_FAILURE);
 	free(current);
 }
 

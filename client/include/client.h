@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:46:02 by acazuc            #+#    #+#             */
-/*   Updated: 2016/09/27 11:37:13 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/09/30 23:10:12 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 # include <limits.h>
 # include <netdb.h>
 # include <fcntl.h>
+
+#ifndef SO_NOSIGPIPE
+# define SO_NOSIGPIPE 0
+#endif
 
 typedef struct			s_env
 {

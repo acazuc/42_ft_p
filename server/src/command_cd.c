@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:54:09 by acazuc            #+#    #+#             */
-/*   Updated: 2016/05/21 16:07:32 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/09/30 23:11:55 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ static void		error_2(t_client *client, char *gpath, char *new, char *current)
 {
 	free(gpath);
 	free(new);
-	chdir(current);
+	if (chdir(current) == -1)
+		ft_exit("server: can't chdir back", EXIT_FAILURE);
 	free(current);
 	write_long(client, -2);
 }

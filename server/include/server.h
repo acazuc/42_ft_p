@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:52:25 by acazuc            #+#    #+#             */
-/*   Updated: 2016/09/27 11:37:24 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/09/30 23:10:49 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 # include <errno.h>
 # include <dirent.h>
 # include <fcntl.h>
+
+#ifndef SO_NOSIGPIPE
+# define SO_NOSIGPIPE 0
+#endif
 
 typedef struct			s_env
 {

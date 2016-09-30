@@ -6,11 +6,21 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:54:37 by acazuc            #+#    #+#             */
-/*   Updated: 2016/05/21 16:02:31 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/09/30 22:56:52 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "server.h"
+
+static void		set_nosigpipe(int fd)
+{
+	int		opt_val;
+
+	opt_val = 1;
+	if (setsockopt(fd, SOL_SOCKET, SO_NOSIGPIPE, &opt_val
+				, sizeof(opt_val)) == -1)
+		ft_exit("server: can't set NO_SIGPIPE", EXIT_FAILURE);
+}
 
 static void		set_current_path(t_client *client)
 {
@@ -25,8 +35,8 @@ void			run_client(int fd)
 	t_client	client;
 	long		packet_id;
 
-	ft_putendl_fd("server: new client connected", 2);
 	client.sock_fd = fd;
+	set_nosigpipe(client.sock_fd);
 	set_current_path(&client);
 	while (1)
 	{

@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:46:02 by acazuc            #+#    #+#             */
-/*   Updated: 2016/10/01 12:07:56 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/01 12:22:26 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define COMMAND_PUT 5
 # define COMMAND_GET 6
 # define COMMAND_TOUCH 7
-# define COMMAND_RM 8
+# define COMMAND_UNLINK 8
 # define COMMAND_MKDIR 9
 # define COMMAND_RMDIR 10
 
@@ -57,6 +57,7 @@ void					command_put(t_env *env, char **splitted);
 void					command_pwd(t_env *env, char **splitted);
 void					command_quit(t_env *env, char **splitted);
 void					command_touch(t_env *env, char **splitted);
+void					command_unlink(t_env *env, char **splitted);
 long					read_long(t_env *env);
 char					*read_str(t_env *env);
 void					*read_mem(t_env *env, long length);

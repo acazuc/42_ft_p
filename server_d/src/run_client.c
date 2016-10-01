@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:54:37 by acazuc            #+#    #+#             */
-/*   Updated: 2016/10/01 12:18:44 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/01 12:32:43 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ static int		do_action(long packet_id, t_client *client)
 		command_get(client);
 	else if (packet_id == COMMAND_TOUCH)
 		command_touch(client);
+	else if (packet_id == COMMAND_UNLINK)
+		command_unlink(client);
 	else
 		return (0);
 	return (1);

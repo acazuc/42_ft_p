@@ -1,5 +1,4 @@
 rmdir
 mkdir
 unlink
-touch
 ls via execve

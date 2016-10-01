@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:45:44 by acazuc            #+#    #+#             */
-/*   Updated: 2016/10/01 13:17:19 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/01 14:08:22 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ static int	do_run(t_env *env, char **splitted)
 		command_touch(env, splitted);
 	else if (!ft_strcmp(splitted[0], "unlink"))
 		command_unlink(env, splitted);
+	else if (!ft_strcmp(splitted[0], "mkdir"))
+		command_mkdir(env, splitted);
 	else
 		return (0);
 	return (1);

@@ -1,5 +1,5 @@
 rmdir
 mkdir
 unlink
+touch
 ls via execve
-error message on command failure

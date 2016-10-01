@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:54:37 by acazuc            #+#    #+#             */
-/*   Updated: 2016/10/01 11:44:07 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/01 11:55:57 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,27 @@ static void		set_current_path(t_client *client)
 		ft_exit("server: can't malloc", EXIT_FAILURE);
 }
 
+static void		do_action(long packet_id, t_client *client)
+{
+	if (packet_id == COMMAND_PWD)
+		command_pwd(&client);
+	else if (packet_id == COMMAND_LS)
+		command_ls(&client);
+	else if (packet_id == COMMAND_CD)
+		command_cd(&client);
+	else if (packet_id == COMMAND_QUIT)
+		ft_exit("server: client shutdown", EXIT_FAILURE);
+	else if (packet_id == COMMAND_PUT)
+		command_put(&client);
+	else if (packet_id == COMMAND_GET)
+		command_get(&client);
+	else if (packet_id == COMMAND_TOUCH)
+		command_touch(&client);
+	else
+		return (0);
+	return (1);
+}
+
 void			run_client(int fd)
 {
 	t_client	client;
@@ -42,19 +63,7 @@ void			run_client(int fd)
 	{
 		if (read(client.sock_fd, &packet_id, sizeof(packet_id)) <= 0)
 			ft_exit("server: client shutdown", EXIT_SUCCESS);
-		if (packet_id == COMMAND_PWD)
-			command_pwd(&client);
-		else if (packet_id == COMMAND_LS)
-			command_ls(&client);
-		else if (packet_id == COMMAND_CD)
-			command_cd(&client);
-		else if (packet_id == COMMAND_QUIT)
-			ft_exit("server: client shutdown", EXIT_FAILURE);
-		else if (packet_id == COMMAND_PUT)
-			command_put(&client);
-		else if (packet_id == COMMAND_GET)
-			command_get(&client);
-		else
+		if (!do_action(packet_id, &client))
 			ft_exit("unknown packet", EXIT_FAILURE);
 	}
 }

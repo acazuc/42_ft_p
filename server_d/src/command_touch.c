@@ -6,11 +6,11 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/01 11:56:03 by acazuc            #+#    #+#             */
-/*   Updated: 2016/10/01 12:04:24 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/01 12:18:58 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_p.h"
+#include "server.h"
 
 static void		get_file_name_path(char *path_name, char **path, char **file)
 {
@@ -70,7 +70,7 @@ void				command_touch(t_client *client)
 		free(tmp);
 		return ;
 	}
-	if ((fd = open(file, O_CREATE | O_RDONLY)) == -1)
+	if ((fd = open(file, O_CREAT | O_RDONLY)) == -1)
 	{
 		write_long(client, -2);
 		free(tmp);

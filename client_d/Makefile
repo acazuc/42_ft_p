@@ -6,7 +6,7 @@
 #    By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/25 06:50:12 by acazuc            #+#    #+#              #
-#    Updated: 2016/09/27 11:33:48 by acazuc           ###   ########.fr        #
+#    Updated: 2016/10/01 12:06:21 by acazuc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRCS_NAME = main.c \
 			command_put.c \
 			command_pwd.c \
 			command_quit.c \
+			command_touch.c \
 			reads.c \
 			writes.c \
 

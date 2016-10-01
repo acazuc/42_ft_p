@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:46:02 by acazuc            #+#    #+#             */
-/*   Updated: 2016/10/01 11:53:18 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/01 12:07:56 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void					command_get(t_env *env, char **splitted);
 void					command_put(t_env *env, char **splitted);
 void					command_pwd(t_env *env, char **splitted);
 void					command_quit(t_env *env, char **splitted);
+void					command_touch(t_env *env, char **splitted);
 long					read_long(t_env *env);
 char					*read_str(t_env *env);
 void					*read_mem(t_env *env, long length);

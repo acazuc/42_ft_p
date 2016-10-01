@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:45:44 by acazuc            #+#    #+#             */
-/*   Updated: 2016/05/21 15:48:45 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/01 12:07:39 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void		run_command(t_env *env, char *command)
 			command_pwd(env, splitted);
 		else if (!ft_strcmp(splitted[0], "quit"))
 			command_quit(env, splitted);
+		else if (!ft_strcmp(splitted[0], "touch"))
+			command_touch(env, splitted);
 		else
 			ft_putendl("unknown command");
 	}

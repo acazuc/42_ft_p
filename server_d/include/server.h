@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:52:25 by acazuc            #+#    #+#             */
-/*   Updated: 2016/10/01 11:54:10 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/01 12:05:36 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,6 @@ void					command_get_2_error3(t_client *client, int fd
 		, char *tmp);
 void					command_get_put_file(t_client *client, int fd);
 void					command_cd(t_client *client);
+void					command_touch(t_client *client);
 
 #endif

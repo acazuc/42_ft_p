@@ -6,7 +6,7 @@
 #    By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/25 06:50:12 by acazuc            #+#    #+#              #
-#    Updated: 2016/09/27 11:36:01 by acazuc           ###   ########.fr        #
+#    Updated: 2016/10/01 12:06:10 by acazuc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRCS_NAME = main.c \
 			command_ls.c \
 			command_put.c \
 			command_pwd.c \
+			command_touch.c \
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 

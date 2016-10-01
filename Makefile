@@ -6,7 +6,7 @@
 #    By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/25 06:50:12 by acazuc            #+#    #+#              #
-#    Updated: 2016/10/01 11:51:57 by acazuc           ###   ########.fr        #
+#    Updated: 2016/10/01 13:20:13 by acazuc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ client:
 server:
 	@echo " - Making server"
 	@make -C server_d
-	@ln -s server_d/server server
+	@ln -sf server_d/server server
 
 clean:
 	@echo " - Cleaning libft"

@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:52:25 by acazuc            #+#    #+#             */
-/*   Updated: 2016/10/01 12:32:20 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/01 13:33:18 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,6 @@ void					command_get_put_file(t_client *client, int fd);
 void					command_cd(t_client *client);
 void					command_touch(t_client *client);
 void					command_unlink(t_client *client);
+char					*remove_last_slash(char *str);
 
 #endif

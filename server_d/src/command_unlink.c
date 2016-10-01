@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/01 12:32:48 by acazuc            #+#    #+#             */
-/*   Updated: 2016/10/01 13:16:36 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/01 13:38:01 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int		move_to(t_client *client, char *gpath)
 	return (1);
 }
 
-static void			put_error_free(t_client *client, char *tmp)
+static void		put_error_free(t_client *client, char *tmp)
 {
 	free(tmp);
 	if (errno == ENOENT)
@@ -67,11 +67,11 @@ static void			put_error_free(t_client *client, char *tmp)
 		write_long(client, -5);
 }
 
-static int			check_dir(t_client *client, char *file)
+static int		check_dir(t_client *client, char *file)
 {
 	struct stat	sstat;
 
-	if (stat(file, &sstat) == -1)
+	if (lstat(file, &sstat) == -1)
 	{
 		put_error_free(client, file);
 		free(file);
@@ -86,13 +86,14 @@ static int			check_dir(t_client *client, char *file)
 	return (1);
 }
 
-void				command_unlink(t_client *client)
+void			command_unlink(t_client *client)
 {
 	char		*path;
 	char		*file;
 	char		*tmp;
 
-	get_file_name_path((tmp = read_str(client)), &path, &file);
+	tmp = remove_last_slash(read_str(client));
+	get_file_name_path(tmp, &path, &file);
 	if (!move_to(client, path))
 	{
 		write_long(client, -1);

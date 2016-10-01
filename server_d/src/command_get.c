@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:54:12 by acazuc            #+#    #+#             */
-/*   Updated: 2016/09/30 23:14:05 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/01 13:34:19 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,8 @@ void			command_get(t_client *client)
 	int		mode;
 	int		fd;
 
-	get_file_name_path((tmp = read_str(client)), &path, &file);
+	tmp = remove_last_slash(read_str(client));
+	get_file_name_path(tmp, &path, &file);
 	if (!move_to(client, path))
 	{
 		write_long(client, -1);

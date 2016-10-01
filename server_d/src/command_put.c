@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:54:19 by acazuc            #+#    #+#             */
-/*   Updated: 2016/05/21 16:16:49 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/01 13:33:55 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void		command_put(t_client *client)
 	int		fd;
 	int		mode;
 
-	file = read_str(client);
+	file = remove_last_slash(read_str(client));
 	file = get_file_name(file);
 	if (!(file = ft_strjoin_free2("./", file)))
 		ft_exit("server: can't join file name", EXIT_FAILURE);

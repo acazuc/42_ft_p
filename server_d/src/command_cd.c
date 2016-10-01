@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:54:09 by acazuc            #+#    #+#             */
-/*   Updated: 2016/09/30 23:11:55 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/01 13:37:08 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void			command_cd(t_client *client)
 	ft_bzero(current, PATH_MAX + 1);
 	if (!getcwd(current, PATH_MAX))
 		ft_exit("server: can't getcwd", EXIT_FAILURE);
-	if (chdir((gpath = read_str(client))) == -1)
+	if (chdir((gpath = remove_last_slash(read_str(client)))) == -1)
 	{
 		error_1(client, gpath, current);
 		return ;

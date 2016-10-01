@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/01 11:56:03 by acazuc            #+#    #+#             */
-/*   Updated: 2016/10/01 13:16:12 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/01 13:39:08 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,21 +56,22 @@ static int		move_to(t_client *client, char *gpath)
 	return (1);
 }
 
-void				command_touch(t_client *client)
+void			command_touch(t_client *client)
 {
 	char	*path;
 	char	*file;
 	char	*tmp;
 	int		fd;
 
-	get_file_name_path((tmp = read_str(client)), &path, &file);
+	tmp = remove_last_slash(read_str(client));
+	get_file_name_path(tmp, &path, &file);
 	if (!move_to(client, path))
 	{
 		write_long(client, -1);
 		free(tmp);
 		return ;
 	}
-	if ((fd = open(tmp, O_CREAT | O_RDONLY)) == -1)
+	if ((fd = open(tmp, O_CREAT | O_RDONLY, 0644)) == -1)
 	{
 		write_long(client, -2);
 		free(tmp);

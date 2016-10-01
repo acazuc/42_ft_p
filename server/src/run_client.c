@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:54:37 by acazuc            #+#    #+#             */
-/*   Updated: 2016/09/30 22:56:52 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/01 11:44:07 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,17 @@ void			run_client(int fd)
 	{
 		if (read(client.sock_fd, &packet_id, sizeof(packet_id)) <= 0)
 			ft_exit("server: client shutdown", EXIT_SUCCESS);
-		if (packet_id == 1)
+		if (packet_id == COMMAND_PWD)
 			command_pwd(&client);
-		else if (packet_id == 2)
+		else if (packet_id == COMMAND_LS)
 			command_ls(&client);
-		else if (packet_id == 3)
+		else if (packet_id == COMMAND_CD)
 			command_cd(&client);
-		else if (packet_id == 4)
+		else if (packet_id == COMMAND_QUIT)
 			ft_exit("server: client shutdown", EXIT_FAILURE);
-		else if (packet_id == 5)
+		else if (packet_id == COMMAND_PUT)
 			command_put(&client);
-		else if (packet_id == 6)
+		else if (packet_id == COMMAND_GET)
 			command_get(&client);
 		else
 			ft_exit("unknown packet", EXIT_FAILURE);

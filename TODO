@@ -1,4 +1,5 @@
 rmdir
 mkdir
 unlink
+ls via execve
 error message on command failure

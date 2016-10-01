@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:45:14 by acazuc            #+#    #+#             */
-/*   Updated: 2016/05/21 15:47:30 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/01 11:41:22 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	command_ls(t_env *env, char **splitted)
 	char	*tmp;
 	long	number;
 
-	write_long(env, 2);
+	write_long(env, COMMAND_LS);
 	number = read_long(env);
 	if (number == -1)
 	{

@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:52:25 by acazuc            #+#    #+#             */
-/*   Updated: 2016/09/30 23:10:49 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/01 11:43:32 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@
 #ifndef SO_NOSIGPIPE
 # define SO_NOSIGPIPE 0
 #endif
+
+# define COMMAND_PWD 1
+# define CONMAND_LS 2
+# define COMMAND_CD 3
+# define COMMAND_QUIT 4
+# define COMMAND_PUT 5
+# define COMMAND_GET 6
 
 typedef struct			s_env
 {

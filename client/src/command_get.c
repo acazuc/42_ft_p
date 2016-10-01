@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:45:12 by acazuc            #+#    #+#             */
-/*   Updated: 2016/05/21 15:51:15 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/01 11:42:18 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void			command_get(t_env *env, char **splitted)
 {
 	int		res;
 
-	write_long(env, 6);
+	write_long(env, COMMAND_GET);
 	if (!splitted[1])
 	{
 		ft_putendl("ERROR: you must specify a file to get");

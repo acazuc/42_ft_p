@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:45:08 by acazuc            #+#    #+#             */
-/*   Updated: 2016/05/21 15:45:10 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/01 11:42:56 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	command_cd(t_env *env, char **splitted)
 		ft_putendl("ERROR: you must specify a folder to go in");
 		return ;
 	}
-	write_long(env, 3);
+	write_long(env, COMMAND_CD);
 	write_str(env, splitted[1]);
 	result = read_long(env);
 	if (result == -1)

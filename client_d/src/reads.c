@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:45:34 by acazuc            #+#    #+#             */
-/*   Updated: 2016/09/30 23:17:02 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/04 16:27:46 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,13 @@ void	*read_mem(t_env *env, long len)
 	if (read(env->sock_fd, mem, len) != len)
 		ft_exit("client: can't read from socket", EXIT_FAILURE);
 	return (mem);
+}
+
+char	read_byte(t_env *env)
+{
+	char	val;
+
+	if (read(env->sock_fd, &val, sizeof(val)) != sizeof(val))
+		ft_exit("client: can't read from socket", EXIT_FAILURE);
+	return (val);
 }

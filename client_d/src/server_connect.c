@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:45:47 by acazuc            #+#    #+#             */
-/*   Updated: 2016/09/30 22:56:46 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/04 16:20:22 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	server_connect(t_env *env)
 	if (connect(env->sock_fd, (struct sockaddr*)env->sockaddr
 				, sizeof(*env->sockaddr)) == -1)
 		ft_exit("client: can't connect to host", EXIT_FAILURE);
-	if (setsockopt(env->sock_fd, SOL_SOCKET, SO_NOSIGPIPE, &opt_val
-				, sizeof(opt_val)) == -1)
+	if (SO_NOSIGPIPE && setsockopt(env->sock_fd, SOL_SOCKET, SO_NOSIGPIPE
+				, &opt_val, sizeof(opt_val)) == -1)
 		ft_exit("client: can't set NO_SIGPIPE", EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:46:02 by acazuc            #+#    #+#             */
-/*   Updated: 2016/10/01 13:55:03 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/04 16:25:39 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,6 @@
 # include <netdb.h>
 # include <fcntl.h>
 
-# ifndef SO_NOSIGPIPE
-#  define SO_NOSIGPIPE 0
-# endif
-
 # define COMMAND_PWD 1
 # define COMMAND_LS 2
 # define COMMAND_CD 3
@@ -35,6 +31,10 @@
 # define COMMAND_UNLINK 8
 # define COMMAND_MKDIR 9
 # define COMMAND_RMDIR 10
+
+#ifndef SO_NOSIGPIPE
+# define SO_NOSIGPIPE 0
+#endif
 
 typedef struct			s_env
 {
@@ -65,5 +65,6 @@ void					*read_mem(t_env *env, long length);
 void					write_long(t_env *env, long val);
 void					write_str(t_env *env, char *str);
 void					write_mem(t_env *env, void *data, size_t len);
+char					read_byte(t_env *env);
 
 #endif

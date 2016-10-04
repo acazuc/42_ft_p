@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:52:25 by acazuc            #+#    #+#             */
-/*   Updated: 2016/10/04 21:35:05 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/04 21:51:04 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,7 @@ void					command_mkdir(t_client *client);
 char					*remove_last_slash(char *str);
 void					ls_replace_args(t_client *client, char **args);
 char					*replace_start_slash(t_client *client, char *str);
+void					ls_replace_arg_2(t_client *client, char **arg
+		, int is_dir, char *name);
 
 #endif

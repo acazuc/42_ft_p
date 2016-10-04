@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 20:43:46 by acazuc            #+#    #+#             */
-/*   Updated: 2016/10/04 21:37:57 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/04 21:49:56 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,24 +82,14 @@ static void	replace_arg(t_client *client, char **arg)
 		get_file_name_path(*arg, &path, &name);
 	if (invalid_path(client, path))
 	{
-		free(*arg);
 		free(orig);
-		if (!(*arg = ft_strdup(client->origin_path)))
-			ft_exit("ft_strdup failed", EXIT_FAILURE);
-		if (!is_dir)
-		{
-			if (!(*arg = ft_strjoin_free1(*arg, "/")))
-				ft_exit("ft_strjoin failed", EXIT_FAILURE);
-			if (!(*arg = ft_strjoin_free1(*arg, name)))
-				ft_exit("ft_strjoin failed", EXIT_FAILURE);
-		}
+		ls_replace_arg_2(client, arg, is_dir, name);
 	}
 	else
 	{
 		free(*arg);
 		*arg = orig;
 	}
-
 }
 
 void		ls_replace_args(t_client *client, char **av)

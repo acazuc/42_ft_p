@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:52:25 by acazuc            #+#    #+#             */
-/*   Updated: 2016/10/01 14:12:57 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/04 17:14:18 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@
 # include <errno.h>
 # include <dirent.h>
 # include <fcntl.h>
+# include <unistd.h>
+# include <sys/wait.h>
 
-# ifndef SO_NOSIGPIPE
+#ifndef SO_NOSIGPIPE
 #  define SO_NOSIGPIPE 0
 # endif
 
@@ -57,9 +59,11 @@ void					parse_parameters(t_env *env, char **av);
 long					read_long(t_client *client);
 char					*read_str(t_client *client);
 void					*read_mem(t_client *client, long len);
+char					read_byte(t_client *client);
 void					write_long(t_client *client, long val);
 void					write_str(t_client *client, char *str);
 void					write_mem(t_client *client, void *data, size_t len);
+void					write_byte(t_client *client, char val);
 void					run_client(int fd);
 void					command_pwd(t_client *client);
 void					command_put(t_client *client);

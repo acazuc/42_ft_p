@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:54:37 by acazuc            #+#    #+#             */
-/*   Updated: 2016/10/01 12:32:43 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/04 16:20:59 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static void		set_nosigpipe(int fd)
 	int		opt_val;
 
 	opt_val = 1;
+	if (!SO_NOSIGPIPE)
+		return ;
 	if (setsockopt(fd, SOL_SOCKET, SO_NOSIGPIPE, &opt_val
 				, sizeof(opt_val)) == -1)
 		ft_exit("server: can't set NO_SIGPIPE", EXIT_FAILURE);

@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:54:41 by acazuc            #+#    #+#             */
-/*   Updated: 2016/05/21 15:54:42 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/04 16:15:17 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	write_long(t_client *client, long val)
 {
-	if (write(client->sock_fd, &val, sizeof(val)) == -1)
-		ft_exit("client: can't write long value", EXIT_FAILURE);
+	if (write(client->sock_fd, &val, sizeof(val)) != sizeof(val))
+		ft_exit("server: can't write long value", EXIT_FAILURE);
 }
 
 void	write_str(t_client *client, char *str)
@@ -29,6 +29,12 @@ void	write_str(t_client *client, char *str)
 
 void	write_mem(t_client *client, void *data, size_t len)
 {
-	if (write(client->sock_fd, data, len) == -1)
-		ft_exit("client: can't write mem value", EXIT_FAILURE);
+	if (write(client->sock_fd, data, len) != (ssize_t)len)
+		ft_exit("server: can't write mem value", EXIT_FAILURE);
+}
+
+void	write_byte(t_client *client, char val)
+{
+	if (write(client->sock_fd, &val, sizeof(val)) != sizeof(val))
+		ft_exit("server: can't write to socket", EXIT_FAILURE);
 }

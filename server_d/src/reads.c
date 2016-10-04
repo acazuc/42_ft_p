@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:54:30 by acazuc            #+#    #+#             */
-/*   Updated: 2016/09/30 23:16:31 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/04 16:12:22 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,13 @@ void	*read_mem(t_client *client, long len)
 	if (read(client->sock_fd, mem, len) != len)
 		ft_exit("client: can't read from socket", EXIT_FAILURE);
 	return (mem);
+}
+
+char	read_byte(t_client *client)
+{
+	char	val;
+
+	if (read(client->sock_fd, &val, sizeof(val)) != sizeof(val))
+		ft_exit("client: can't read from socket", EXIT_FAILURE);
+	return (val);
 }

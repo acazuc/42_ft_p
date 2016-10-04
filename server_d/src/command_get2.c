@@ -6,13 +6,13 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 16:11:09 by acazuc            #+#    #+#             */
-/*   Updated: 2016/09/30 23:12:43 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/04 20:31:11 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "server.h"
 
-void	command_get_2_error(char *new, char *current)
+void		command_get_2_error(char *new, char *current)
 {
 	free(new);
 	if (chdir(current) == -1)
@@ -20,7 +20,7 @@ void	command_get_2_error(char *new, char *current)
 	free(current);
 }
 
-void	command_get_2_error2(t_client *client, char *tmp)
+void		command_get_2_error2(t_client *client, char *tmp)
 {
 	if (errno == ENOENT)
 		write_long(client, -1);
@@ -31,8 +31,25 @@ void	command_get_2_error2(t_client *client, char *tmp)
 	free(tmp);
 }
 
-void	command_get_2_end(t_client *client, int mode, int fd, char *tmp)
+static int	get_mode(int fd, int *mode)
 {
+	struct stat	stats;
+
+	if (fstat(fd, &stats) == -1)
+		return (0);
+	*mode = stats.st_mode;
+	return (1);
+}
+
+void		command_get_2_end(t_client *client, int fd, char *tmp)
+{
+	int		mode;
+
+	if (!get_mode(fd, &mode))
+	{
+		command_get_2_error3(client, fd, tmp);
+		return ;
+	}
 	write_long(client, 1);
 	write_long(client, mode);
 	if (read_long(client))
@@ -41,7 +58,7 @@ void	command_get_2_end(t_client *client, int mode, int fd, char *tmp)
 	free(tmp);
 }
 
-void	command_get_2_error3(t_client *client, int fd, char *tmp)
+void		command_get_2_error3(t_client *client, int fd, char *tmp)
 {
 	close(fd);
 	write_long(client, -3);

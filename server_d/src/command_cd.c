@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:54:09 by acazuc            #+#    #+#             */
-/*   Updated: 2016/10/01 13:37:08 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/04 21:42:59 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,13 @@ static void		error_1(t_client *client, char *gpath, char *current)
 	free(current);
 }
 
-static void		error_2(t_client *client, char *gpath, char *new, char *current)
+static void		move(t_client *client, char *new)
 {
-	free(gpath);
-	free(new);
-	if (chdir(current) == -1)
-		ft_exit("server: can't chdir back", EXIT_FAILURE);
-	free(current);
-	write_long(client, -2);
+	if (ft_strstr(new, client->origin_path) != new)
+	{
+		if (chdir(client->origin_path) == -1)
+			ft_exit("server: can't move to base directory", EXIT_FAILURE);
+	}
 }
 
 void			command_cd(t_client *client)
@@ -47,7 +46,8 @@ void			command_cd(t_client *client)
 	ft_bzero(current, PATH_MAX + 1);
 	if (!getcwd(current, PATH_MAX))
 		ft_exit("server: can't getcwd", EXIT_FAILURE);
-	if (chdir((gpath = remove_last_slash(read_str(client)))) == -1)
+	if (chdir((gpath = remove_last_slash(replace_start_slash(
+							client, read_str(client))))) == -1)
 	{
 		error_1(client, gpath, current);
 		return ;
@@ -57,10 +57,9 @@ void			command_cd(t_client *client)
 	ft_bzero(new, PATH_MAX + 1);
 	if (!getcwd(new, PATH_MAX))
 		ft_exit("server: can't getcwd", EXIT_FAILURE);
-	if (ft_strstr(new, client->origin_path) != new)
-	{
-		error_2(client, gpath, new, current);
-		return ;
-	}
+	move(client, new);
+	free(new);
+	free(current);
+	free(gpath);
 	write_long(client, 0);
 }

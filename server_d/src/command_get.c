@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:54:12 by acazuc            #+#    #+#             */
-/*   Updated: 2016/10/01 13:34:19 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/04 21:36:33 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,36 +52,21 @@ static int		move_to(t_client *client, char *gpath)
 	char	*current;
 	char	*new;
 
-	if (!(current = malloc(PATH_MAX + 1)))
-		ft_exit("server: can't malloc", EXIT_FAILURE);
-	ft_bzero(current, PATH_MAX + 1);
-	if (!getcwd(current, PATH_MAX))
+	if (!(current = getcwd(NULL, 0)))
 		ft_exit("server: can't getcwd", EXIT_FAILURE);
 	if (chdir(gpath) == -1)
 	{
 		free(current);
 		return (0);
 	}
-	if (!(new = malloc(PATH_MAX + 1)))
-		ft_exit("server: can't malloc", EXIT_FAILURE);
-	ft_bzero(new, PATH_MAX + 1);
-	if (!getcwd(new, PATH_MAX))
+	if (!(new = getcwd(NULL, 0)))
 		ft_exit("server: can't getcwd", EXIT_FAILURE);
-	if (ft_strstr(new, client->origin_path) != new)
+	if (ft_strstr(new, client->origin_path) != new
+			&& chdir(client->origin_path) == -1)
 	{
 		command_get_2_error(new, current);
 		return (0);
 	}
-	return (1);
-}
-
-static int		get_mode(int fd, int *mode)
-{
-	struct stat	stats;
-
-	if (fstat(fd, &stats) == -1)
-		return (0);
-	*mode = stats.st_mode;
 	return (1);
 }
 
@@ -90,10 +75,13 @@ void			command_get(t_client *client)
 	char	*path;
 	char	*file;
 	char	*tmp;
-	int		mode;
+	char	*crt;
 	int		fd;
 
+	if (!(crt = getcwd(NULL, 0)))
+		ft_exit("server: can't getcwd", EXIT_FAILURE);
 	tmp = remove_last_slash(read_str(client));
+	tmp = replace_start_slash(client, tmp);
 	get_file_name_path(tmp, &path, &file);
 	if (!move_to(client, path))
 	{
@@ -106,10 +94,7 @@ void			command_get(t_client *client)
 		command_get_2_error2(client, tmp);
 		return ;
 	}
-	if (!get_mode(fd, &mode))
-	{
-		command_get_2_error3(client, fd, tmp);
-		return ;
-	}
-	command_get_2_end(client, mode, fd, tmp);
+	command_get_2_end(client, fd, tmp);
+	if (chdir(crt) == -1)
+		ft_exit("server: can't go back to old cwd", EXIT_FAILURE);
 }

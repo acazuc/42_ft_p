@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:45:34 by acazuc            #+#    #+#             */
-/*   Updated: 2016/10/04 16:27:46 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/04 20:37:39 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,9 @@ void	*read_mem(t_env *env, long len)
 
 	if (len <= 0)
 		ft_exit("client: invalid memory length", EXIT_FAILURE);
-	if (!(mem = malloc(len)))
+	if (!(mem = malloc(len + 1)))
 		ft_exit("client: can't malloc from read_mem", EXIT_FAILURE);
+	ft_bzero(mem, len + 1);
 	if (read(env->sock_fd, mem, len) != len)
 		ft_exit("client: can't read from socket", EXIT_FAILURE);
 	return (mem);

@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:54:18 by acazuc            #+#    #+#             */
-/*   Updated: 2016/10/04 19:05:52 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/04 21:09:53 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static char	**read_args(t_client *client)
 	i = 0;
 	while (i < ac)
 		av[++i] = read_str(client);
+	ls_replace_args(client, av);
 	return (av);
 }
 

@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:52:25 by acazuc            #+#    #+#             */
-/*   Updated: 2016/10/04 17:14:18 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/04 21:35:05 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void					command_ls(t_client *client);
 void					command_get(t_client *client);
 void					command_get_2_error(char *new, char *current);
 void					command_get_2_error2(t_client *client, char *tmp);
-void					command_get_2_end(t_client *client, int mode, int fd
+void					command_get_2_end(t_client *client, int fd
 		, char *tmp);
 void					command_get_2_error3(t_client *client, int fd
 		, char *tmp);
@@ -81,5 +81,7 @@ void					command_touch(t_client *client);
 void					command_unlink(t_client *client);
 void					command_mkdir(t_client *client);
 char					*remove_last_slash(char *str);
+void					ls_replace_args(t_client *client, char **args);
+char					*replace_start_slash(t_client *client, char *str);
 
 #endif

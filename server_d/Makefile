@@ -6,7 +6,7 @@
 #    By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/25 06:50:12 by acazuc            #+#    #+#              #
-#    Updated: 2016/10/01 14:13:05 by acazuc           ###   ########.fr        #
+#    Updated: 2016/10/04 21:34:50 by acazuc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,8 @@ SRCS_NAME = main.c \
 			command_unlink.c \
 			command_mkdir.c \
 			remove_last_slash.c \
+			ls_replace_args.c \
+			replace_start_slash.c \
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 

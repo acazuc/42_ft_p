@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:45:12 by acazuc            #+#    #+#             */
-/*   Updated: 2016/10/01 11:42:18 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/04 20:40:04 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,13 @@ static char		*get_file_name(char *file)
 
 	tmp = ft_strrchr(file, '/');
 	if (!tmp)
-		return (ft_strdup(file));
-	tmp = ft_strdup(tmp + 1);
-	free(file);
+	{
+		if (!(tmp = ft_strdup(file)))
+			ft_exit("client: strdup failed", EXIT_FAILURE);
+		return (tmp);
+	}
+	if (!(tmp = ft_strdup(tmp + 1)))
+		ft_exit("client: strdup failed", EXIT_FAILURE);
 	return (tmp);
 }
 
@@ -33,6 +37,7 @@ static void		read_file(t_env *env, int fd)
 	{
 		data = read_mem(env, tmp);
 		tmp = write(fd, data, tmp);
+		free(data);
 	}
 	if (tmp == -2)
 		ft_putendl("ERROR: error while reading file");

@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 20:43:46 by acazuc            #+#    #+#             */
-/*   Updated: 2016/10/04 21:49:56 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/04 21:53:46 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,17 +103,13 @@ void		ls_replace_args(t_client *client, char **av)
 	{
 		if (yep)
 		{
-			ft_putendl("a");
 			av[i] = replace_start_slash(client, av[i]);
-			ft_putendl("b");
 			replace_arg(client, &av[i]);
-			ft_putendl("c");
 		}
 		else
 		{
 			if (av[i][0] != '-')
 			{
-				ft_putendl("yep");
 				yep = 1;
 				i--;
 			}

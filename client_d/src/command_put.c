@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:45:16 by acazuc            #+#    #+#             */
-/*   Updated: 2016/10/01 11:48:13 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/06 22:08:43 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void	put_file(t_env *env, int fd)
 	if (readed == -1)
 		ft_putendl("ERROR: can't read file");
 	write_long(env, -1);
+	ft_putendl("SUCCESS");
 	free(buff);
 }
 

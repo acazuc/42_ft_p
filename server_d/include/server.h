@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:52:25 by acazuc            #+#    #+#             */
-/*   Updated: 2016/10/04 21:51:04 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/06 22:29:05 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@
 # define COMMAND_GET 6
 # define COMMAND_TOUCH 7
 # define COMMAND_UNLINK 8
-# define COMMAND_MKDIR 9
-# define COMMAND_RMDIR 10
 
 typedef struct			s_env
 {
@@ -79,7 +77,6 @@ void					command_get_put_file(t_client *client, int fd);
 void					command_cd(t_client *client);
 void					command_touch(t_client *client);
 void					command_unlink(t_client *client);
-void					command_mkdir(t_client *client);
 char					*remove_last_slash(char *str);
 void					ls_replace_args(t_client *client, char **args);
 char					*replace_start_slash(t_client *client, char *str);

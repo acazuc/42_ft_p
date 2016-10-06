@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:45:44 by acazuc            #+#    #+#             */
-/*   Updated: 2016/10/04 21:43:22 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/06 22:35:11 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,13 @@ static int	do_run(t_env *env, char **splitted)
 		command_put(env, splitted);
 	else if (!ft_strcmp(splitted[0], "pwd"))
 		command_pwd(env, splitted);
-	else if (!ft_strcmp(splitted[0], "quit"))
+	else if (!ft_strcmp(splitted[0], "quit")
+			|| !ft_strcmp(splitted[0], "exit"))
 		command_quit(env, splitted);
 	else if (!ft_strcmp(splitted[0], "touch"))
 		command_touch(env, splitted);
 	else if (!ft_strcmp(splitted[0], "unlink"))
 		command_unlink(env, splitted);
-	else if (!ft_strcmp(splitted[0], "mkdir"))
-		command_mkdir(env, splitted);
 	else
 		return (0);
 	return (1);

@@ -6,13 +6,13 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:54:18 by acazuc            #+#    #+#             */
-/*   Updated: 2016/10/04 21:09:53 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/07 11:22:21 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "server.h"
 
-static void execute_ls(t_client *client, char **av)
+static void	execute_ls(t_client *client, char **av)
 {
 	if (dup2(client->sock_fd, 1) == -1)
 		ft_exit("dup2 failed", EXIT_FAILURE);
@@ -40,7 +40,7 @@ static char	**read_args(t_client *client)
 	return (av);
 }
 
-void	command_ls(t_client *client)
+void		command_ls(t_client *client)
 {
 	pid_t	pid;
 	int		status;

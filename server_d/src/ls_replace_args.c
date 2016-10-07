@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 20:43:46 by acazuc            #+#    #+#             */
-/*   Updated: 2016/10/04 21:53:46 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/07 11:22:59 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void		get_file_name_path(char *path_name, char **path, char **file)
 	*file = last_slash + 1;
 }
 
-static int	is_directory(char *file)
+static int		is_directory(char *file)
 {
 	struct stat	sstat;
 
@@ -39,12 +39,12 @@ static int	is_directory(char *file)
 	return (0);
 }
 
-static int	invalid_path(t_client *client, char *path)
+static int		invalid_path(t_client *client, char *path)
 {
 	char	*orig;
 	char	*new;
 	int		ret;
-	
+
 	if (!(orig = getcwd(NULL, 0)))
 		ft_exit("getcwd failed", EXIT_FAILURE);
 	if (chdir(path) == -1)
@@ -63,7 +63,7 @@ static int	invalid_path(t_client *client, char *path)
 	return (ret);
 }
 
-static void	replace_arg(t_client *client, char **arg)
+static void		replace_arg(t_client *client, char **arg)
 {
 	char	*orig;
 	char	*path;
@@ -92,7 +92,7 @@ static void	replace_arg(t_client *client, char **arg)
 	}
 }
 
-void		ls_replace_args(t_client *client, char **av)
+void			ls_replace_args(t_client *client, char **av)
 {
 	int		yep;
 	int		i;

@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:52:25 by acazuc            #+#    #+#             */
-/*   Updated: 2016/10/06 22:29:05 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/07 11:22:07 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include <unistd.h>
 # include <sys/wait.h>
 
-#ifndef SO_NOSIGPIPE
+# ifndef SO_NOSIGPIPE
 #  define SO_NOSIGPIPE 0
 # endif
 

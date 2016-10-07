@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 15:46:02 by acazuc            #+#    #+#             */
-/*   Updated: 2016/10/06 22:29:43 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/10/07 11:21:36 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@
 # define COMMAND_TOUCH 7
 # define COMMAND_UNLINK 8
 
-#ifndef SO_NOSIGPIPE
-# define SO_NOSIGPIPE 0
-#endif
+# ifndef SO_NOSIGPIPE
+#  define SO_NOSIGPIPE 0
+# endif
 
 typedef struct			s_env
 {
